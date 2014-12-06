@@ -1,4 +1,4 @@
-NSERT INTO Staff 
+INSERT INTO Staff 
 (Staff_ID, Staff_Fn, Staff_Ln, Position, Staff_City, Staff_area, Staff_Phone, Salary)
 VALUES 
 ('S001','Becky',' Johnson', 'Manager', 'St.Cloud', '320', '5555555', 15);
