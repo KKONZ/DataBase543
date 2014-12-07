@@ -1,0 +1,18 @@
+CREATE TABLE Member(
+
+    Mem_ID VARCHAR2(10) CONSTRAINT Mem_ID_PK PRIMARY KEY,
+
+    Mem_Fn VARCHAR2(25),
+
+    Mem_Ln VARCHAR2(25),
+
+    Mem_City VARCHAR2(25),
+
+    Mem_area CHAR(3),
+
+    Mem_Phn CHAR(7),
+
+    Regtr_Dt DATE,
+
+Balance NUMBER(5, 2));
+
