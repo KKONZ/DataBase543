@@ -1,1 +1,4 @@
-insert here
+delete rent_status where rent_id = 'R007';
+
+
+
