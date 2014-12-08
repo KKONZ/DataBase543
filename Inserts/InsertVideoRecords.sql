@@ -1,0 +1,24 @@
+
+INSERT INTO Video 
+(Vid_ID, Cat_ID)
+VALUES('V001', 'C001');
+
+INSERT INTO Video 
+(Vid_ID, Cat_ID)
+VALUES('V002', 'C002');
+
+INSERT INTO Video 
+(Vid_ID, Cat_ID)
+VALUES('V003', 'C003');
+
+INSERT INTO Video 
+(Vid_ID, Cat_ID)
+VALUES('V004', 'C003');
+
+INSERT INTO Video 
+(Vid_ID, Cat_ID)
+VALUES('V005', 'C004');
+
+INSERT INTO Video 
+(Vid_ID, Cat_ID)
+VALUES('V006', 'C002');
