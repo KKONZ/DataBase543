@@ -39,10 +39,10 @@ INSERT INTO Rent_Status
 VALUES
 ('R010', '08-Dec-2014', 'V007', 'M002');
 
-
-
-
-
+INSERT INTO Rent_Status 
+(Rent_ID, Rent_Date,Vid_ID, Mem_ID)
+VALUES
+('R011', '08-Dec-2014', 'V007', 'M002');
 
 
 
