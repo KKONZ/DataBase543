@@ -11,14 +11,6 @@ and rent_code = 'RC001';
   if last_accrual IS NOT NULL then
     select sum(TRUNC(sysdate)-TRUNC(Last_accrual)) into accrual_length from rent_status
    
-    --- May to identify these again but probably not...
-    /*
-    from rent_status
-    where return_date IS Null;
-    and mem_id=:new.mem_id
-    and rent_code = 'R001';
-    */
-    
     update 
     member
     set balance = balance +(accrual_length*2)
@@ -39,8 +31,9 @@ and rent_code = 'RC001';
     rent_status
     set last_accrual = sysdate
     where mem_id=:new.mem_id;
-  else
+  else 
 dbms_output.put_line('no new charges');
 end if;
 end;
 /
+show errors
