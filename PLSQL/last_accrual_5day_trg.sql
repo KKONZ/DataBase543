@@ -1,5 +1,5 @@
 create or replace trigger last_accrual_5Day_trg
-before insert on rent_status for each row
+before insert or update on rent_status for each row
 declare rent_length binary_Integer;
 declare accrual_length binary_Integer;
 begin
