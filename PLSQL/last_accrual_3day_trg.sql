@@ -10,7 +10,7 @@ and mem_id =:new.mem_id
 and rent_code = 'RC003';
   if last_accrual IS NOT NULL;
     select sum(TRUNC(sysdate)-TRUNC(Last_accrual)) into accrual_length
-   
+    FROM rent_status
     --- May to identify these again but probably not...
     /*
     from rent_status
