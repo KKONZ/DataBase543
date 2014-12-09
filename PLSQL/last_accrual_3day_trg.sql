@@ -20,7 +20,7 @@ and rent_code = 'RC003';
     
     update 
     member
-    set balance = balance +(accrual_length*2)
+    set balance = balance +((accrual_length-3)*2)
     where mem_id=:new.mem_id;
     
     update
@@ -30,7 +30,7 @@ and rent_code = 'RC003';
  elsif (rent_length) >3 then
     update
     member
-    set balance = balance +  (rent_length * 2)
+    set balance = balance +  ((rent_length-3) * 2)
     where mem_id=:new.mem_id;
     
     update
