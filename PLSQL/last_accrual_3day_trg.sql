@@ -44,3 +44,4 @@ dbms_output.put_line('no new 3 day rental charges');
 end if;
 end;
 /
+show errors
