@@ -1,4 +1,8 @@
 delete rent_status where rent_id = 'R007';
 
+--- This insert works to test a number of triggers:
+insert into Rent_Status (Rent_ID, Rent_Date, Mem_ID) VALUES ('R007',sysdate, 'M001');
 
+select * from Rent_Status;
+select * from member;
 
