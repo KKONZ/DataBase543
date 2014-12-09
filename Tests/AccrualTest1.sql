@@ -7,10 +7,8 @@ Rent_ID VARCHAR2(10) CONSTRAINT Rent_ID_PK PRIMARY KEY,
 Rent_Date DATE,
 Return_Date DATE,
 
-
 --- new column to keep track of accrual dates
 last_accrual DATE;
-
 
 Rent_code VARCHAR2(10),
 CONSTRAINT Rent_Code_FK1 FOREIGN KEY(Rent_Code) REFERENCES Rental_Code(Rent_Code),
