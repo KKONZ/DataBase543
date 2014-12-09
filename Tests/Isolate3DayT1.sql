@@ -1,4 +1,4 @@
-drop trigger last_accrual_1day_trg
+drop trigger late_fee_new_rls_trg
 
 Insert into Rent_Status (Rent_ID, Rent_Date, Rent_Code, Vid_Id, Mem_ID)
 VALUES
