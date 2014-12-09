@@ -19,3 +19,16 @@ dbms_output.put_line('no new charges');
 end if;
 end;
 /
+
+
+select * from member;
+
+/*
+run below if need to reset member balances to zero
+*/
+
+update member set balance =0 where mem_id ='M001';
+update member set balance =0 where mem_id ='M002';
+update member set balance =0 where mem_id ='M003';
+update member set balance =0 where mem_id ='M004';
+update member set balance =0 where mem_id ='M005';
