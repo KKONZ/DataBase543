@@ -9,7 +9,7 @@ FROM rent_status
 where return_date IS Null
 and mem_id=:new.mem_id
 and rent_code = 'RC001';
-select sum(TRUNC(sysdate)-TRUNC(last_accrual)) into accrual_length from rent_status
+select sum(TRUNC(sysdate) - TRUNC(last_accrual)) into accrual_length
 FROM rent_status
 where return_date IS Null
 and mem_id =:new.mem_id
