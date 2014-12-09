@@ -27,20 +27,20 @@ VALUES
 INSERT INTO Rent_Status 
 (Rent_ID, Rent_Date,Vid_ID, Mem_ID)
 VALUES
-('R008', '08-Dec-2014', 'V005', 'M002');
+('R008', '08-Dec-2014', 'V001', 'M002');
 INSERT INTO Rent_Status 
 (Rent_ID, Rent_Date,Vid_ID, Mem_ID)
 VALUES
-('R009', '09-Dec-2014', 'V006', 'M002');
+('R009', '09-Dec-2014', 'V001', 'M002');
 INSERT INTO Rent_Status 
 (Rent_ID, Rent_Date,Vid_ID, Mem_ID)
 VALUES
-('R010', '08-Dec-2014', 'V007', 'M002');
+('R010', '08-Dec-2014', 'V001', 'M002');
 
 INSERT INTO Rent_Status 
 (Rent_ID, Rent_Date,Vid_ID, Mem_ID)
 VALUES
-('R011', '08-Dec-2014', 'V007', 'M002');
+('R011', '08-Dec-2014', 'V001', 'M002');
 
 
 
