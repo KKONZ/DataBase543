@@ -16,7 +16,7 @@ and rent_code = 'RC001';
       set balance = balance +  (rent_length * 2)
       where mem_id=:new.mem_id;
      else
-      sum(TRUNC(sysdate)-TRUNC(Last_accrual)) into accrual_length;
+      select sum(TRUNC(sysdate)-TRUNC(Last_accrual)) into accrual_length;
       update 
       member
       set balance = balance +(accrual_length*2)
