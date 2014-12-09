@@ -3,18 +3,27 @@ before insert on rent_status for each row
 declare rent_length binary_Integer;
 declare accrual_length binary_Integer;
 begin
-
 SELECT sum(TRUNC(sysdate) - TRUNC(rent_date)) into rent_length
 FROM rent_status
 where return_date IS Null
 and mem_id =:new.mem_id
 and rent_code = 'RC001';
-  if last_accrual IS NOT NULL;    
+  if last_accrual IS NOT NULL;
+    select sum(TRUNC(sysdate)-TRUNC(Last_accrual)) into accrual_length
    
+    --- May to identify these again but probably not...
+    /*
+    from rent_status
+    where return_date IS Null;
+    and mem_id=:new.mem_id
+    and rent_code = 'R001';
+    */
+    
     update 
     member
     set balance = balance +(accrual_length*2)
     where mem_id=:new.mem_id;
+    
     update
     rent_status
     set last_accrual = sysdate
