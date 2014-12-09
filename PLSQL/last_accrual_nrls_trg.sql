@@ -10,7 +10,7 @@ where return_date IS Null
 and mem_id =:new.mem_id
 and rent_code = 'RC001';
  if (rent_length) > 1 then 
-     if last_accrual IS NULL 
+     if last_accrual IS NULL then
       update
       member
       set balance = balance +  (rent_length * 2)
