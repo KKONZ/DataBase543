@@ -12,7 +12,10 @@ Select * from Member;
 
 Insert into Rent_Status (Rent_ID, Rent_Date, Rent_Code, Vid_Id, Mem_ID)
 VALUES
-('R100', '04-Dec-2014', 'RC001', 'V002', 'M004');
+('R101', '04-Dec-2014', 'RC001', 'V003', 'M004');
 
 select * from Rent_Status;
 Select * from Member;
+
+delete Rent_Status where Rent_ID = 'R100';
+delete Rent_Status where Rent_ID = 'R101';
