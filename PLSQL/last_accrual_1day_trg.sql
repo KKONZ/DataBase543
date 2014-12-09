@@ -24,7 +24,7 @@ and rent_code = 'RC001';
     update
     member
     set balance = balance +  (rent_length * 2)
-    where mem_id=:new.mem_id;
+    where mem_id=:new.mem_id
     dbms_output.put_line('You have a past rental that needs to be returned');
     
     update
