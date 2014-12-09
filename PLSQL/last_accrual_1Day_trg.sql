@@ -1,4 +1,4 @@
-create or replace trigger last_accrual_nrls_trg
+create or replace trigger last_accrual_1Day_trg
 before insert on rent_status for each row
 declare rent_length binary_Integer;
 declare accrual_length binary_Integer;
