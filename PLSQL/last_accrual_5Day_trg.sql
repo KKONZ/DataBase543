@@ -41,9 +41,10 @@ and rent_code = 'RC005';
     set last_accrual = sysdate
     where mem_id=:new.mem_id;
     
-    dbms_output.put_line('You have a past rental that needs to be returned');
+    dbms_output.put_line('You have a past due rental that needs to be returned');
   else
 dbms_output.put_line('no new charges');
 end if;
 end;
 /
+show errors
