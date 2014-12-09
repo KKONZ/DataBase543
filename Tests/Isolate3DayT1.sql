@@ -15,3 +15,6 @@ VALUES
 
 select * from Rent_Status;
 Select * from Member;
+
+delete Rent_Status where Rent_ID = 'R300';
+delete Rent_Status where Rent_ID = 'R301';
