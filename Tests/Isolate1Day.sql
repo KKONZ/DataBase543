@@ -1,4 +1,4 @@
---- select * from user_objects;
+select * from user_objects;
 
 --- make sure that 1Day trigger is the only rent code trigger
 --- delete trigger;
