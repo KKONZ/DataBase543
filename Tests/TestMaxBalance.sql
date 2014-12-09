@@ -20,4 +20,4 @@ run after demo
 */
 
 
-DELETE Rent_Status where Rent_ID = 'R001';
+DELETE Rent_Status where Rent_ID = 'R007';
