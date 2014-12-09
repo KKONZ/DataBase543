@@ -1,16 +1,20 @@
 create or replace trigger last_accrual_1Day_trg
 before insert or update on rent_status for each row
-declare rent_length binary_Integer,
-         accrual_length binary_Integer;
+declare 
+rent_length binary_Integer;
+accrual_length binary_Integer;
 begin
 SELECT sum(TRUNC(sysdate) - TRUNC(rent_date)) into rent_length
 FROM rent_status
 where return_date IS Null
 and mem_id =:new.mem_id
 and rent_code = 'RC001';
+select sum(TRUNC(sysdate)-TRUNC(Last_accrual)) into accrual_length from rent_status
+FROM rent_status
+where return_date IS Null
+and mem_id =:new.mem_id
+and rent_code = 'RC001';
   if last_accrual IS NOT NULL then
-    select sum(TRUNC(sysdate)-TRUNC(Last_accrual)) into accrual_length from rent_status;
-   
     update 
     member
     set balance = balance +(accrual_length*2)
