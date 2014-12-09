@@ -28,11 +28,19 @@ and rent_code = 'RC005';
     rent_status
     set last_accrual = sysdate
     where mem_id=:new.mem_id;
+ 
  elsif (rent_length) >5 then
+    
     update
     member
     set balance = balance +  (rent_length * 2)
     where mem_id=:new.mem_id;
+    
+    update
+    rent_status
+    set last_accrual = sysdate
+    where mem_id=:new.mem_id;
+    
     dbms_output.put_line('You have a past rental that needs to be returned');
   else
 dbms_output.put_line('no new charges');
