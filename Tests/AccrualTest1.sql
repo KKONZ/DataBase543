@@ -8,7 +8,7 @@ Rent_Date DATE,
 Return_Date DATE,
 
 --- new column to keep track of accrual dates
-last_accrual DATE;
+last_accrual DATE,
 
 Rent_code VARCHAR2(10),
 CONSTRAINT Rent_Code_FK1 FOREIGN KEY(Rent_Code) REFERENCES Rental_Code(Rent_Code),
@@ -27,7 +27,7 @@ VALUES
 INSERT INTO Rent_Status 
 (Rent_ID, Rent_Date,Vid_ID, Mem_ID)
 VALUES
-('R008', '08-Dec-2014’', 'V005', 'M002');
+('R008', '08-Dec-2014', 'V005', 'M002');
 INSERT INTO Rent_Status 
 (Rent_ID, Rent_Date,Vid_ID, Mem_ID)
 VALUES
