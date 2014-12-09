@@ -23,3 +23,5 @@ show errors
 
 
 --- DELETE THIS TRIGGER AFTER DEMO IF NEW TRIGGER WORKS----
+
+drop trigger late_fee_Trg;
