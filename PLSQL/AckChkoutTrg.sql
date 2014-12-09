@@ -8,4 +8,4 @@ DBMS_OUTPUT.PUT_LINE('Check out is complete, thank you!');
 
 End;
 / 
-show error;
+show errors
