@@ -9,7 +9,7 @@ where return_date IS Null
 and mem_id =:new.mem_id
 and rent_code = 'RC001';
   if last_accrual IS NOT NULL then
-    select sum(TRUNC(sysdate)-TRUNC(Last_accrual)) into accrual_length
+    select sum(TRUNC(sysdate)-TRUNC(Last_accrual)) into accrual_length from rent_status
    
     --- May to identify these again but probably not...
     /*
@@ -44,4 +44,3 @@ dbms_output.put_line('no new charges');
 end if;
 end;
 /
-show errors
