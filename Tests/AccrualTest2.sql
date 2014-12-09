@@ -20,6 +20,9 @@ CONSTRAINT Mem_ID_FK3 FOREIGN KEY (Mem_ID) REFERENCES
 Member(Mem_ID));
 
 
+--compare the outcome of 1st three rent codes triggers 
+--to the accrual triggers
+
 
 INSERT INTO Rent_Status 
 (Rent_ID, Rent_Date, Vid_ID, Mem_ID)
