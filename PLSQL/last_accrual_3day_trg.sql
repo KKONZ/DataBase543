@@ -40,7 +40,7 @@ and rent_code = 'RC003';
     set last_accrual = sysdate
     where mem_id=:new.mem_id;
   else
-dbms_output.put_line('no new charges');
+dbms_output.put_line('no new 3 day rental charges');
 end if;
 end;
 /
