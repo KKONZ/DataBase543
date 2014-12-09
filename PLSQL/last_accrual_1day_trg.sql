@@ -17,7 +17,7 @@ and rent_code = 'RC001';
   if last_accrual IS NOT NULL then
     update 
     member
-    set balance = balance +(accrual_length*2)
+    set balance = balance +((accrual_length-1)*2)
     where mem_id=:new.mem_id;
     
     update
@@ -27,7 +27,7 @@ and rent_code = 'RC001';
  elsif (rent_length) >1 then
     update
     member
-    set balance = balance +  (rent_length * 2)
+    set balance = balance +  ((rent_length-1) * 2)
     where mem_id=:new.mem_id;
     dbms_output.put_line('You have a past rental that needs to be returned');
     
