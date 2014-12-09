@@ -34,6 +34,11 @@ and rent_code = 'RC001';
     set balance = balance +  (rent_length * 2)
     where mem_id=:new.mem_id;
     dbms_output.put_line('You have a past rental that needs to be returned');
+    
+    update
+    rent_status
+    set last_accrual = sysdate
+    where mem_id=:new.mem_id;
   else
 dbms_output.put_line('no new charges');
 end if;
