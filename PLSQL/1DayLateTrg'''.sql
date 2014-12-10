@@ -1,6 +1,7 @@
 create or replace trigger late_fee_new_rls_trg
 before insert or update on rent_status for each row
 declare 
+PRAGMA AUTONOMOUS_TRANSACTION;
 rent_length binary_Integer;
 begin
 SELECT sum(TRUNC(sysdate) - TRUNC(rent_date)) into rent_length
