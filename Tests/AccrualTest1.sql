@@ -20,34 +20,39 @@ Member(Mem_ID));
 
 
 
-INSERT INTO Rent_Status 
-(Rent_ID, Rent_Date, Vid_ID, Mem_ID)
-VALUES
-('R007', '07-Dec-2014', 'V001', 'M002');
-INSERT INTO Rent_Status 
-(Rent_ID, Rent_Date,Vid_ID, Mem_ID)
-VALUES
-('R008', '08-Dec-2014', 'V001', 'M002');
-INSERT INTO Rent_Status 
-(Rent_ID, Rent_Date,Vid_ID, Mem_ID)
-VALUES
-('R009', '09-Dec-2014', 'V001', 'M002');
-INSERT INTO Rent_Status 
-(Rent_ID, Rent_Date,Vid_ID, Mem_ID)
-VALUES
-('R010', '08-Dec-2014', 'V001', 'M002');
-
-INSERT INTO Rent_Status 
-(Rent_ID, Rent_Date,Vid_ID, Mem_ID)
-VALUES
-('R011', '08-Dec-2014', 'V001', 'M002');
 
 
+
+INSERT INTO Rent_Status 
+(Rent_ID, Rent_Date, Rent_Code, Vid_ID, Mem_ID)
+VALUES
+('R007', '07-Dec-2014', 'RC001', 'V001', 'M002');
+
+INSERT INTO Rent_Status 
+(Rent_ID, Rent_Date,Rent_Code,Vid_ID, Mem_ID)
+VALUES
+('R008', '08-Dec-2014', 'RC003', 'V001', 'M002');
+INSERT INTO Rent_Status 
+(Rent_ID, Rent_Date,Rent_Code,Vid_ID, Mem_ID)
+VALUES
+('R009', '09-Dec-2014','RC005', 'V001', 'M002');
+INSERT INTO Rent_Status 
+(Rent_ID, Rent_Date,Rent_Code,Vid_ID, Mem_ID)
+VALUES
+('R010', '08-Dec-2014','RC001', 'V001', 'M002');
+
+INSERT INTO Rent_Status 
+(Rent_ID, Rent_Date,Rent_Code,Vid_ID, Mem_ID)
+VALUES
+('R011', '08-Dec-2014','RC001', 'V001', 'M002');
+
+---- pause make sure trigger is loaded
 
 --- after test 
 delete Rent_Status where Rent_ID = 'R007';
 delete Rent_Status where Rent_ID = 'R008';
 delete Rent_Status where Rent_ID = 'R009';
 delete Rent_Status where Rent_ID = 'R010';
-
-
+delete Rent_Status where Rent_ID = 'R011';
+delete Rent_Status where Rent_ID = 'R012';
+---pause make sure trigger is loaded
