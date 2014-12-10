@@ -9,17 +9,18 @@ FROM rent_status
 where return_date IS Null
 and mem_id=:new.mem_id
 and rent_code = 'RC001';
-select sum(TRUNC(sysdate) - TRUNC(last_accrual)) into accrual_length
-FROM rent_status
-where return_date IS Null
-and mem_id =:new.mem_id
-and rent_code = 'RC001';
-  if last_accrual IS NOT NULL then
+select sum(TRUNC(sysdate) - TRUNC(Last_Accrual)) into accrual_length
+    FROM rent_status
+    where return_date IS Null
+    and mem_id =:new.mem_id
+    and rent_code = 'RC001';
+
+  if accrual_length IS NOT NULL then
+  
     update 
     member
-    set balance = balance +((accrual_length-1)*2)
+    set balance = balance + ((accrual_length-1)*2)
     where mem_id=:new.mem_id;
-    
     update
     rent_status
     set last_accrual = sysdate
@@ -29,7 +30,6 @@ and rent_code = 'RC001';
     member
     set balance = balance +  ((rent_length-1) * 2)
     where mem_id=:new.mem_id;
-    dbms_output.put_line('You have a past rental that needs to be returned');
     
     update
     rent_status
