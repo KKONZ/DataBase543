@@ -6,7 +6,7 @@ type rowidtabtype is table of rowid index by binary_integer;
 rent_date_tab datetabtype;
 return_date_tab datetabtype;
 last_accrual_tab datetabtype;
-rowid_tab rowidtabtype;
+rent_id_tab rowidtabtype;
 changed_balance chartabtype;
 start_date_tab_size binary_integer;
 end;
