@@ -37,3 +37,6 @@ update member set balance =0 where mem_id ='M002';
 update member set balance =0 where mem_id ='M003';
 update member set balance =0 where mem_id ='M004';
 update member set balance =0 where mem_id ='M005';
+
+
+http://oracle-base.com/articles/9i/mutating-table-exceptions.php
