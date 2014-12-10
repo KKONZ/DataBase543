@@ -8,7 +8,6 @@ FROM rent_status
 where return_date IS Null
 and mem_id =:new.mem_id
 and rent_code = 'RC001'
-and last_accrual IS NULL;
 if (rent_length) > 1 
 then
 update
