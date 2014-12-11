@@ -6,16 +6,13 @@ SELECT sum(TRUNC(sysdate) - TRUNC(rent_date)) into rent_length
 FROM rent_status
 where return_date IS Null
 and mem_id =:new.mem_id
-and rent_code = 'RC003';
- 
-if (rent_length) > 3
-then
+and rent_code = 'RC003'
+and rent_date > trunc(sysdate - 3);
+
 update
 member
 set balance = balance +  (rent_length * 2)
 where mem_id=:new.mem_id;
-else
-dbms_output.put_line('no new charges');
-end if;
+
 end;
 /
