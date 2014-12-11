@@ -1,9 +1,9 @@
 create or replace package Rent_pkg
  as 
-    type ridArray is table of rowid index by binary_integer; 
+    type rid_Array is table of rowid index by binary_integer; 
 
-  newRows ridArray; 
-   empty   ridArray; 
+  newRows rid_Array; 
+   empty   rid_Array; 
 
   end; 
   / 
