@@ -9,7 +9,7 @@ and mem_id =:new.mem_id
 and last_accrual IS Null
 and rent_code = 'RC003';
  
-if (rent_length) > 1
+if (rent_length) > 3
 then
 update
 member
