@@ -7,7 +7,7 @@ FROM rent_status
 where return_date IS Null
 and mem_id =:new.mem_id
 and last_accrual IS Null
-and rent_date > (sysdate-3)
+and rent_date > trunc(sysdate-3)
 and rent_code = 'RC003';
 
 update
