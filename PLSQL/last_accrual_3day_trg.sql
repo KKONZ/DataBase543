@@ -15,9 +15,6 @@ where return_date IS Null
 and mem_id =:new.mem_id
 and rent_code = 'RC003';
   if last_accrual IS NOT NULL then
-    select sum(TRUNC(sysdate)-TRUNC(Last_accrual)) into accrual_length
-    FROM rent_status;
-    
     update 
     member
     set balance = balance +((accrual_length-3)*2)
