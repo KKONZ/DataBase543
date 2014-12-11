@@ -12,7 +12,6 @@ if (rent_length) > 5
 then
 update
 member
-balance  := :new.balance  - :old.balance;
 set balance = balance +  (rent_length * 2)
 where mem_id=:new.mem_id;
 else
