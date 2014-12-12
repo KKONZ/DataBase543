@@ -15,8 +15,8 @@ member
 set balance = balance +  ((rent_length)* 2)
 where mem_id=:new.mem_id;
 update rent_status
-set last_accrual = sysdate;
---- mem_id=:new.mem_id
+set last_accrual = sysdate
+where mem_id=:new.mem_id;
 end if;
 end;
 /
