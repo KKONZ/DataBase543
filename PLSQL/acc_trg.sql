@@ -1,4 +1,4 @@
-create or replace trigger late_fee_acc_1day_trg
+create or replace trigger acc_trg
 before insert on rent_status for each row
 declare rent_length binary_Integer;
 begin
