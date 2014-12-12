@@ -12,7 +12,7 @@ and rent_code = 'RC003';
 
 update
 member
-set balance = balance +  ((rent_length)* 2)
+set balance = balance +  ((rent_length - 3)* 2)
 where mem_id=:new.mem_id;
 update
 Rent_Status
