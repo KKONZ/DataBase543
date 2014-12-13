@@ -1,4 +1,4 @@
-create or replace trigger late_fee_new_3day_trg
+create or replace trigger 3day_trg
 before insert or update on rent_status for each row
 declare rent_length binary_Integer;
 begin
@@ -12,7 +12,7 @@ and rent_code = 'RC003';
 
 update
 member
-set balance = balance +  ((rent_length)* 2)
+set balance = balance +  ((rent_length - 3)* 2)
 where mem_id=:new.mem_id;
 update
 Rent_Status
