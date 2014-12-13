@@ -65,13 +65,15 @@ CREATE TABLE Member(
 	Mem_area CHAR(3),
 	Mem_Phn CHAR(7),
 	Regtr_Dt DATE,
-Balance NUMBER);
+Balance NUMBER(10,2));
 
 CREATE TABLE Rent_Status(
 Rent_ID VARCHAR2(10) CONSTRAINT Rent_ID_PK PRIMARY KEY,
 Rent_Date DATE,
 Return_Date DATE,
-last_accrual DATE,
+last_accrual_1 DATE,
+last_accrual_3 DATE,
+last_accrual_5 DATE,
 Rent_code VARCHAR2(10),
 CONSTRAINT Rent_Code_FK1 FOREIGN KEY(Rent_Code) REFERENCES Rental_Code(Rent_Code),
 Vid_ID VARCHAR2(10),
@@ -217,30 +219,99 @@ VALUES
 INSERT INTO Rent_Status 
 (Rent_ID, Rent_Date, Rent_Code, Vid_ID, Mem_ID)
 VALUES
-('R001', '18-Oct-2014', 'RC001', 'V001', 'M001');
+('R001', '01-DEC-2014', 'RC001', 'V001', 'M001');
 INSERT INTO Rent_Status 
 (Rent_ID, Rent_Date,Rent_Code, Vid_ID, Mem_ID)
 VALUES
-('R002', '18-Oct-2014', 'RC001', 'V003', 'M001');
+('R002', '01-DEC-2014', 'RC001', 'V003', 'M001');
 INSERT INTO Rent_Status 
 (Rent_ID, Rent_Date,Rent_Code, Vid_ID, Mem_ID)
 VALUES
-('R003', '18-Oct-2014', 'RC003', 'V004', 'M001');
+('R003', '01-DEC-2014', 'RC003', 'V004', 'M001');
 INSERT INTO Rent_Status 
 (Rent_ID, Rent_Date, Return_Date,Rent_Code, Vid_ID, Mem_ID)
 VALUES
-('R004', '21-Oct-2014', '28-Oct-2014', 'RC003','V006', 'M002');
+('R004', '01-DEC-2014', '28-Oct-2014', 'RC003','V006', 'M002');
 INSERT INTO Rent_Status 
 (Rent_ID, Rent_Date,Rent_Code,Vid_ID, Mem_ID)
 VALUES
-('R005', '18-Oct-2014','RC005', 'V002', 'M001');
+('R005', '01-DEC-2014','RC001', 'V002', 'M001');
 
 
 COMMIT;
 
+create or replace trigger late_fee1_trg
+before insert on rent_status for each row
+declare rent_length binary_Integer;
+begin
+SELECT sum(TRUNC(sysdate) - TRUNC(rent_date+1)) into rent_length
+FROM rent_status
+where return_date IS Null 
+and last_accrual_1 IS Null 
+and mem_id =:new.mem_id
+and rent_code = 'RC001';
+
+update
+member 
+set balance = balance + (rent_length*2)
+where mem_id=:new.mem_id;
+
+update
+rent_status
+set last_accrual_1 = sysdate
+where mem_id=:new.mem_id;
+end;
+/
+show errors
+
+create or replace trigger late_fee3_trg
+before insert on rent_status for each row
+declare rent_length binary_Integer;
+begin
+SELECT sum(TRUNC(sysdate) - TRUNC(rent_date+3)) into rent_length
+FROM rent_status
+where return_date IS Null 
+and last_accrual_3 IS NULL
+and mem_id =:new.mem_id
+and rent_code = 'RC003';
+
+update
+member 
+set balance = balance + (rent_length * 2)
+where mem_id=:new.mem_id;
+
+update
+rent_status
+set last_accrual_3 = sysdate
+where mem_id=:new.mem_id;
+end;
+/
+show errors
 
 
+create or replace trigger late_fee5_trg
+before insert on rent_status for each row
+declare rent_length binary_Integer;
+begin
+SELECT sum(TRUNC(sysdate) - TRUNC(rent_date+5)) into rent_length
+FROM rent_status
+where return_date IS Null 
+and last_accrual_5 IS Null 
+and mem_id =:new.mem_id
+and rent_code = 'RC001';
 
+update
+member 
+set balance = balance + (rent_length * 2)
+where mem_id=:new.mem_id;
+
+update
+rent_status
+set last_accrual_5 = sysdate
+where mem_id=:new.mem_id;
+end;
+/
+show errors
 
 
 CREATE OR REPLACE TRIGGER MaxRent_Trg
@@ -295,110 +366,3 @@ end;
 
 /
 show error;
-
-
-
-create or replace trigger day1_trg
-before insert on rent_status for each row
-declare rent_length binary_Integer;
-begin
-SELECT sum(TRUNC(sysdate) - TRUNC(rent_date)) into rent_length
-FROM rent_status
-where return_date IS Null
-and mem_id =:new.mem_id
-and trunc(sysdate)-trunc(rent_date)>1
-and last_accrual IS Null
-and rent_code = 'RC001';
-rent_length:=accrual_length-3;
-update rent_status
-set last_accrual = sysdate
-where mem_id=:new.mem_id;
-update member
-set balance= rent_length * 2
-where mem_id=:new.mem_id;
-
-
-end;
-/
-show errors
-
-
-create or replace trigger late_fee_acc_3day_trg
-before insert on rent_status for each row
-declare accrual_length binary_Integer;
-begin
-SELECT sum(TRUNC(sysdate) - TRUNC(rent_date)) into accrual_length
-FROM rent_status
-where return_date IS Null
-and last_accrual IS NOT Null
-and mem_id =:new.mem_id
-and trunc(sysdate)-trunc(rent_date)>3
-and rent_code = 'RC003';
- 
-accrual_length:=accrual_length-3;
-update rent_status
-set last_accrual = sysdate
-where mem_id=:new.mem_id;
-update member
-set balance= accrual_length * 2
-where mem_id=:new.mem_id;
-
-end;
-/
-show errors
-
-
-create or replace trigger late_fee_acc_5day_trg
-before insert on rent_status for each row
-declare accrual_length binary_Integer;
-begin
-SELECT sum(TRUNC(sysdate) - TRUNC(rent_date)) into accrual_length
-FROM rent_status
-where return_date IS Null
-and last_accrual IS NOT Null
-and mem_id =:new.mem_id
-and trunc(sysdate)-trunc(rent_date)>5
-and rent_code = 'RC005';
-
-accrual_length:=accrual_length-5;
-update rent_status
-set last_accrual = sysdate
-where mem_id=:new.mem_id;
-
-update
-member
-set balance = accrual_length *2
-where mem_id=:new.mem_id;
-
-end;
-/
-show errors
-
-
-create or replace trigger acc_trg
-before insert on rent_status for each row
-declare rent_length binary_Integer;
-begin
-SELECT sum(TRUNC(sysdate) - TRUNC(last_accrual)) into rent_length
-FROM rent_status
-where return_date IS Null
-and last_accrual IS NOT Null
-and mem_id =:new.mem_id;
-
-update
-member
-set Balance=Balance + (rent_length*2)
-where mem_id=:new.mem_id;
-
-update rent_status
-set last_accrual = sysdate
-where mem_id=:new.mem_id;
-end;
-/
-show errors
-
-select * from rent_status;
-
-select * from member;
-
-
