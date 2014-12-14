@@ -209,7 +209,8 @@ select * from rent_status;
 --- Note this has a check to make sure that you actually changed your sysdate
 --- I tried to do this on a Windows 7 machine and even though I was able to change 
 --- the operating sysdate oracle still recognized the current date so when I selected 
---- all from rent_status it was showing 14-Dec-14 not 08-Oct-14 like my PC was outputting
+--- all from rent_status it was showing 14-Dec-14 not 08-Oct-14 which is what my operating system
+--- date was set to.
 
 
 INSERT INTO Rent_Status 
