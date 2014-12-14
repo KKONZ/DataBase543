@@ -259,7 +259,8 @@ where mem_id=:new.mem_id;
 update
 rent_status
 set last_accrual_1 = sysdate
-where mem_id=:new.mem_id;
+where mem_id=:new.mem_id
+and rent_code = 'RC001';
 end if;
 end;
 /
@@ -284,7 +285,8 @@ where mem_id=:new.mem_id;
 update
 rent_status
 set last_accrual_3 = sysdate
-where mem_id=:new.mem_id;
+where mem_id=:new.mem_id
+and rent_code = 'RC003';
 end if;
 end;
 /
@@ -300,7 +302,7 @@ FROM rent_status
 where return_date IS Null 
 and last_accrual_5 IS Null 
 and mem_id =:new.mem_id
-and rent_code = 'RC001';
+and rent_code = 'RC005';
 if rent_length > 0 then
 update
 member 
@@ -310,7 +312,8 @@ where mem_id=:new.mem_id;
 update
 rent_status
 set last_accrual_5 = sysdate
-where mem_id=:new.mem_id;
+where mem_id=:new.mem_id
+and rent_code = 'RC005';
 end if;
 end;
 /
