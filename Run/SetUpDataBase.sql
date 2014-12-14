@@ -219,23 +219,23 @@ VALUES
 INSERT INTO Rent_Status 
 (Rent_ID, Rent_Date, Rent_Code, Vid_ID, Mem_ID)
 VALUES
-('R001', '01-DEC-2014', 'RC001', 'V001', 'M001');
+('R001', '11-DEC-2014', 'RC001', 'V001', 'M001');
 INSERT INTO Rent_Status 
 (Rent_ID, Rent_Date,Rent_Code, Vid_ID, Mem_ID)
 VALUES
-('R002', '01-DEC-2014', 'RC001', 'V003', 'M001');
+('R002', '11-DEC-2014', 'RC001', 'V003', 'M001');
 INSERT INTO Rent_Status 
 (Rent_ID, Rent_Date,Rent_Code, Vid_ID, Mem_ID)
 VALUES
-('R003', '01-DEC-2014', 'RC003', 'V004', 'M001');
+('R003', '11-DEC-2014', 'RC003', 'V004', 'M001');
 INSERT INTO Rent_Status 
 (Rent_ID, Rent_Date, Return_Date,Rent_Code, Vid_ID, Mem_ID)
 VALUES
-('R004', '01-DEC-2014', '28-Oct-2014', 'RC003','V006', 'M002');
+('R004', '11-DEC-2014', '28-Oct-2014', 'RC003','V006', 'M002');
 INSERT INTO Rent_Status 
 (Rent_ID, Rent_Date,Rent_Code,Vid_ID, Mem_ID)
 VALUES
-('R005', '01-DEC-2014','RC001', 'V002', 'M001');
+('R005', '11-DEC-2014','RC001', 'V002', 'M001');
 
 
 COMMIT;
@@ -250,7 +250,7 @@ where return_date IS Null
 and last_accrual_1 IS Null 
 and mem_id =:new.mem_id
 and rent_code = 'RC001';
-
+if rent_length > 0 then
 update
 member 
 set balance = balance + (rent_length*2)
@@ -260,6 +260,7 @@ update
 rent_status
 set last_accrual_1 = sysdate
 where mem_id=:new.mem_id;
+end if;
 end;
 /
 show errors
@@ -274,7 +275,7 @@ where return_date IS Null
 and last_accrual_3 IS NULL
 and mem_id =:new.mem_id
 and rent_code = 'RC003';
-
+if rent_length >0 then
 update
 member 
 set balance = balance + (rent_length * 2)
@@ -284,6 +285,7 @@ update
 rent_status
 set last_accrual_3 = sysdate
 where mem_id=:new.mem_id;
+end if;
 end;
 /
 show errors
@@ -299,7 +301,7 @@ where return_date IS Null
 and last_accrual_5 IS Null 
 and mem_id =:new.mem_id
 and rent_code = 'RC001';
-
+if rent_length > 0 then
 update
 member 
 set balance = balance + (rent_length * 2)
@@ -309,6 +311,7 @@ update
 rent_status
 set last_accrual_5 = sysdate
 where mem_id=:new.mem_id;
+end if;
 end;
 /
 show errors
