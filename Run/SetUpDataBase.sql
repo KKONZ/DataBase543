@@ -239,7 +239,8 @@ VALUES
 
 
 COMMIT;
-
+--- this trigger checks if a customer has a new release that is past due
+--- 
 create or replace trigger late_fee1_trg
 before insert on rent_status for each row
 declare rent_length binary_Integer;
